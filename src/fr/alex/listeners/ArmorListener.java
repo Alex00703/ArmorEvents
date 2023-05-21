@@ -17,6 +17,8 @@ import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.alex.ArmorEvent;
@@ -36,6 +38,7 @@ public class ArmorListener implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		getArmors().put(e.getPlayer(), e.getPlayer().getEquipment().getArmorContents());
+		verify(e.getPlayer());
 	}
 	
 	@EventHandler
@@ -96,7 +99,6 @@ public class ArmorListener implements Listener {
 				getArmors().put(p, current);
 			}
 		}.runTaskLater(ArmorEvent.getInstance(), 1L);
-	}
-	
+	}	
 	
 }
